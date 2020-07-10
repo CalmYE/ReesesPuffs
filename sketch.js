@@ -6,8 +6,8 @@ let puffs = [];
 let travis;
 let square = []; 
 let kanye; 
-let w = 750;
-let h = 750;
+//let w = windowWidth;
+//let h = windowHeight;
 
 
 class Bubble {
@@ -50,11 +50,11 @@ class Bubble {
 	}
 
 	bounce() {
-		if (this.x > w || this.x < 0) {
+		if (this.x > windowWidth || this.x < 0) {
 		this.xspeed = this.xspeed * -1;
 	    //console.log("ok");
 		}
-		if (this.y > h || this.y < 0) {
+		if (this.y > windowHeight || this.y < 0) {
 	    this.yspeed = this.yspeed * -1;
 	    //console.log("nice")
 		}
@@ -77,8 +77,8 @@ class happy {
 	}
 
 	show() {
-		noFill();
-		noStroke();
+		//noFill();
+		//noStroke();
 		rect(this.x, this.y, 240, 240);
 		image(this.img, this.x, this.y, 240, 240);
 	}
@@ -100,18 +100,19 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(750, 750);
+	//createCanvas(750, 750);
+	createCanvas(windowWidth, windowHeight);
 	fahood = createVideo("fahood.MOV")
 	fahood.hide()
-	kanye = new happy (275, 250, 250, 250, loadImage('THICC YE.png'));
-	travis = new happy(275, 250, 240, 240, loadImage('happy travis.png'));
+	kanye = new happy(windowWidth/2 - 100, windowHeight/3, 240, 240, loadImage('happy travis.png'));
+	travis = new happy(windowWidth/2 - 100, windowHeight/3, 240, 240, loadImage('happy travis.png'));
 	fahood = createVideo('fahood.MOV');
 	fahood.size(100,100)
 	fahood.hide()
 
-	for (let i = 0; i < 2; i++) {
-		let x = random(w);
-		let y = random(h);
+	for (let i = 0; i < 25; i++) {
+		let x = random(windowWidth);
+		let y = random(windowHeight);
 		let r = (100);
 		let b = new Bubble(x, y, r)
 		bubbles.push(b);
